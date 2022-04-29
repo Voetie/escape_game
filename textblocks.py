@@ -19,7 +19,6 @@ class Textblocks(pygame.sprite.Sprite):
     def update(self,tekst):
         self.image = pygame.image.load("images/objects/text/textblock"+ str(tekst) +".png")
         self.image = pygame.transform.scale(self.image, self.DEFAULT_IMAGE_SIZE)
-        print("textblock"+ str(tekst) +".png")
         pygame.display.update()
 
     def draw(self, surface):  # tekenen op display
@@ -29,12 +28,14 @@ class Textblocks(pygame.sprite.Sprite):
         return self.tekst
 
     def intro_text(self):
+        
         if self.intro == 0:
             if self.tekst == 2:
                 if self.tekst_teller >= (30 * 7):
                     self.tekst = 4
                     self.update(self.tekst)
                     pygame.mixer.Sound.play(self.dialogue)
+                    pygame.display.update()
                     self.tekst_teller = 0
                 self.tekst_teller += 1
             if self.tekst == 4:
